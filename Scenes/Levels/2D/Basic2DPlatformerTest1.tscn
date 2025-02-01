@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctmx75wv4gyou"]
+
+[ext_resource type="PackedScene" uid="uid://ci6tgivyk1d1u" path="res://Scenes/Reusable/Player Controllers/2D/Basic2DPlatformer/Basic2DPlatformPlayer.tscn" id="1_uerf6"]
+[ext_resource type="PackedScene" uid="uid://c8pgtmsdtw1b2" path="res://Scenes/Reusable/Blockout Tools/2D/BasicStaticBox.tscn" id="2_atm0t"]
+[ext_resource type="PackedScene" uid="uid://v816gtwfhqhv" path="res://Scenes/Reusable/Blockout Tools/2D/floor.tscn" id="3_gw24m"]
+
+[node name="Basic2dPlatformerTest1" type="Node2D"]
+
+[node name="Basic2dPlatformPlayer" parent="." instance=ExtResource("1_uerf6")]
+position = Vector2(-1, -15)
+AIR_JUMPS = 30
+
+[node name="Camera2D" type="Camera2D" parent="Basic2dPlatformPlayer"]
+
+[node name="BasicStaticBox" parent="." instance=ExtResource("2_atm0t")]
+position = Vector2(-1, 25)
+
+[node name="Floor" parent="." instance=ExtResource("3_gw24m")]
+position = Vector2(0, 112)

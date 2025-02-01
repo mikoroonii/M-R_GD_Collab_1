@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://v816gtwfhqhv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2f3rr"]
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_2f3rr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5000.0
+offset_right = 5000.0
+offset_bottom = 40.0
+grow_horizontal = 2

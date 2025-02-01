@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dac7veq4sfak1"]
+
+[ext_resource type="Script" path="res://Scripts/Player Controllers/BallPlayer.gd" id="1_7ue6a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_45ovs"]
+friction = 0.8
+rough = true
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7wxs"]
+radius = 30.0
+
+[node name="BallPlayer" type="RigidBody2D"]
+modulate = Color(0.870588, 0.639216, 0.713726, 1)
+self_modulate = Color(0.870588, 0.639216, 0.713726, 1)
+top_level = true
+collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_45ovs")
+script = ExtResource("1_7ue6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7wxs")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0.0240013, 0)
+scale = Vector2(0.234188, 0.234)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 2
+
+[node name="GrowTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="GrowTimer" to="." method="ungrow"]

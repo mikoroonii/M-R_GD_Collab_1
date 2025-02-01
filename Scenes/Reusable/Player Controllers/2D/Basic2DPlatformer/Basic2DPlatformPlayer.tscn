@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci6tgivyk1d1u"]
+
+[ext_resource type="Script" path="res://Scripts/Player Controllers/Basic 2D Platformer/basic_2d_platform_player.gd" id="1_opnsj"]
+[ext_resource type="SpriteFrames" uid="uid://bvovux73pweat" path="res://Assets/Sprites/2D Player Pixel/knight_spriteframes.tres" id="2_s1p1b"]
+[ext_resource type="AudioStream" uid="uid://cwc1kym7wrnw3" path="res://Assets/Audio/SFX/jump.wav" id="3_teiii"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7c7uy"]
+radius = 25.0
+height = 62.0
+
+[sub_resource type="Gradient" id="Gradient_epvyw"]
+colors = PackedColorArray(1, 1, 1, 0.45098, 1, 1, 1, 0)
+
+[node name="Basic2dPlatformPlayer" type="CharacterBody2D"]
+script = ExtResource("1_opnsj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_s1p1b")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_7c7uy")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_teiii")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.243137)
+show_behind_parent = true
+position = Vector2(0, 36)
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(0, 1)
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 100.0
+angular_velocity_min = -0.65
+angular_velocity_max = 194.16
+damping_min = 90.0
+damping_max = 100.0
+scale_amount_min = 8.0
+scale_amount_max = 16.0
+color_ramp = SubResource("Gradient_epvyw")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="looped"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="looped"]

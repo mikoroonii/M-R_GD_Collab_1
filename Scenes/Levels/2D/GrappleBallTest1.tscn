@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1rxwwhnwlgl1"]
+
+[ext_resource type="PackedScene" uid="uid://v816gtwfhqhv" path="res://Scenes/Reusable/Blockout Tools/2D/floor.tscn" id="1_wq4mv"]
+[ext_resource type="PackedScene" uid="uid://dac7veq4sfak1" path="res://Scenes/Reusable/Player Controllers/2D/GrappleBall/GrappleBall.tscn" id="1_wqbai"]
+[ext_resource type="Script" path="res://Scripts/Player Controllers/Grapple Ball/BallCam.gd" id="2_pp2ar"]
+
+[node name="GrappleBall1" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_wq4mv")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("BallPlayerRef")]
+position = Vector2(42, -167)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("2_pp2ar")
+BallPlayerRef = NodePath("../BallPlayer")
+
+[node name="BallPlayer" parent="." instance=ExtResource("1_wqbai")]
+position = Vector2(88, -111)

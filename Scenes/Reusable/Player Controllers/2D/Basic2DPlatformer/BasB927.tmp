@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci6tgivyk1d1u"]
+
+[ext_resource type="Script" path="res://Scripts/Player Controllers/Basic 2D Platformer/basic_2d_platform_player.gd" id="1_opnsj"]
+[ext_resource type="SpriteFrames" uid="uid://bvovux73pweat" path="res://Assets/Sprites/2D Player Pixel/knight_spriteframes.tres" id="2_s1p1b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7c7uy"]
+radius = 25.0
+height = 70.0
+
+[node name="Basic2dPlatformPlayer" type="CharacterBody2D"]
+script = ExtResource("1_opnsj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_s1p1b")
+animation = &"land"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13)
+shape = SubResource("CapsuleShape2D_7c7uy")
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="looped"]
