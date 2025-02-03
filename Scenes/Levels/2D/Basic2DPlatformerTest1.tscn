@@ -8,9 +8,9 @@
 
 [node name="Basic2dPlatformPlayer" parent="." instance=ExtResource("1_uerf6")]
 position = Vector2(-1, -15)
-AIR_JUMPS = 30
 
 [node name="Camera2D" type="Camera2D" parent="Basic2dPlatformPlayer"]
+position_smoothing_enabled = true
 
 [node name="BasicStaticBox" parent="." instance=ExtResource("2_atm0t")]
 position = Vector2(-1, 25)

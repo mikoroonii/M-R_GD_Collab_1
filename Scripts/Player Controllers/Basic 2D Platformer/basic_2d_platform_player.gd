@@ -100,7 +100,7 @@ func jump():
 		if remaining_air_jumps > 0:
 			velocity.y = -JUMP_VELOCITY
 			remaining_air_jumps -= 1
-			$JumpSFX.pitch_scale = 2 - (float(remaining_air_jumps) / float(AIR_JUMPS))
+			$JumpSFX.pitch_scale = clamp(1 + (AIR_JUMPS - remaining_air_jumps) * 0.1, 1, 2)
 			$JumpSFX.play()
 			jumpParticles()
 		else:
